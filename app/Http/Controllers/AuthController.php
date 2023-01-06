@@ -25,7 +25,30 @@ class AuthController extends Controller
 
         return response()->json([
             'status' => true,
+            'message' => 'Successful register',
             'data' => $user
+        ]);
+    }
+
+    public function login(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+        if ($user) {
+            if (Hash::check($request->password, $user->password)) {
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Successful Login',
+                    'data' => $user
+                ]);
+            }
+            return response()->json([
+                'status' => false,
+                'message' => 'Email or password got wrong!'
+            ]);
+        }
+        return response()->json([
+            'status' => false,
+            'message' => 'Email not registered'
         ]);
     }
 }
