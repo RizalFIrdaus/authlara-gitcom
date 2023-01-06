@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::delete('/nilai/{id}', [HomeController::class, 'destroy'])->name('delete.nilai');
 });
 
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('register', [AuthController::class, 'register']);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
