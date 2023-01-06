@@ -9,14 +9,14 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $nilai = Http::withToken('63ad9f7fc15c404d7d039c37|44aYN4B5Be4jSM7tlbEICi6jrkMjCtg85KjyeB04')->get('http://127.0.0.1:8000/api/nilai')->json()['data'];
+        $nilai = Http::get('http://127.0.0.1:8000/api/nilai')->json()['data'];
         return view('dashboard', compact('nilai'));
     }
 
     public function create(Request $request)
     {
 
-        $matkul = Http::withToken('63ad7ed67b9e8c09f90b0796|1SUslR3FVNYb82kjoV3wr3fRkH7o1RHsyyALINWE')->get('http://127.0.0.1:10000/api/matakuliah')['data'];
+        $matkul = Http::get('http://127.0.0.1:10000/api/matakuliah')['data'];
         return view('create', compact('matkul'));
     }
 
@@ -33,7 +33,7 @@ class HomeController extends Controller
 
     public function edit($id)
     {
-        $nilai = Http::withToken('63ad9f7fc15c404d7d039c37|44aYN4B5Be4jSM7tlbEICi6jrkMjCtg85KjyeB04')->get('http://127.0.0.1:8000/api/nilai/' . $id)->json()['data'];
+        $nilai = Http::get('http://127.0.0.1:8000/api/nilai/' . $id)->json()['data'];
         $matkul = Http::withToken('63ad7ed67b9e8c09f90b0796|1SUslR3FVNYb82kjoV3wr3fRkH7o1RHsyyALINWE')->get('http://127.0.0.1:10000/api/matakuliah')['data'];
         return view('edit', compact('nilai', 'matkul'));
     }
