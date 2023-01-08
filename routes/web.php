@@ -21,14 +21,14 @@ Route::get('/', function () {
 });
 
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
-    Route::get('/nilai/{id}', [HomeController::class, 'edit'])->name('edit.nilai');
-    Route::get('/nilai', [HomeController::class, 'create']);
-    Route::post('/nilai', [HomeController::class, 'store'])->name('edit.nilai');
-    Route::put('/nilai/{id}', [HomeController::class, 'update'])->name('update.nilai');
-    Route::delete('/nilai/{id}', [HomeController::class, 'destroy'])->name('delete.nilai');
-});
+// Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+//     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+//     Route::get('/nilai/{id}', [HomeController::class, 'edit'])->name('edit.nilai');
+//     Route::get('/nilai', [HomeController::class, 'create']);
+//     Route::post('/nilai', [HomeController::class, 'store'])->name('edit.nilai');
+//     Route::put('/nilai/{id}', [HomeController::class, 'update'])->name('update.nilai');
+//     Route::delete('/nilai/{id}', [HomeController::class, 'destroy'])->name('delete.nilai');
+// });
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('login', [AuthController::class, 'login']);
