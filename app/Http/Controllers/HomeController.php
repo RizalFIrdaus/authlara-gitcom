@@ -34,6 +34,8 @@ class HomeController extends Controller
     public function edit($id)
     {
         $nilai = Http::get('http://127.0.0.1:8000/api/nilai/' . $id)->json()['data'];
+        $nilai1 = Http::get('http://127.0.0.1:8000/api/nilai/' . $id)->json()['data'];
+
         $matkul = Http::withToken('63ad7ed67b9e8c09f90b0796|1SUslR3FVNYb82kjoV3wr3fRkH7o1RHsyyALINWE')->get('http://127.0.0.1:10000/api/matakuliah')['data'];
         return view('edit', compact('nilai', 'matkul'));
     }
